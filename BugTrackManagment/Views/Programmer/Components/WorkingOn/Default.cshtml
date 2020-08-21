@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Bug>
+
+
+@if (Model.Any())
+{
+    <div class="card">
+        <div class="card-header border-transparent bg-warning">
+            <h3 class="card-title">Working On</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body p-0" style="display: block;">
+            <div class="table-responsive">
+
+                <!-- insert table here -->
+                <table class="table m-0 table-hover">
+                    <thead >
+                        <tr>
+                            <th scope="col"> Issue Name</th>
+                            <th scope="col"> Summary Name</th>
+                          
+
+                        </tr>
+                    </thead>
+                    @foreach (var bug in Model)
+                    {
+                        <tbody>
+                            <tr
+                                onclick="showInPopup('@Url.Action("Detailsfixed","Programmer",new { id=bug.Id},Context.Request.Scheme)','@bug.Title ')"
+                                >
+                                <td>@bug.Title</td>
+                                <td>@bug.Summary</td>
+                              
+
+                            </tr>
+                        </tbody>
+                    }
+
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer clearfix" style="display: block;">
+            <!-- button for furhter -->
+            @if (ViewBag.isIndex)
+            {
+
+                <span class="text-muted font-italic">(only showing latest items)</span>
+            <a asp-action="WorkingOn" asp-controller="programmer"
+               class="btn btn-sm btn-info float-right">View All</a>
+            }
+        </div>
+        <!-- /.card-footer -->
+    </div>
+}
+else
+{
+    <div class="card">
+        <div class="card-header bg-warning">
+            Working On
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <!-- edit for no blank -->
+                <p>You are currently Not working on Any Issues</p>
+
+            </blockquote>
+        </div>
+    </div>
+}
+
+
+
+
+
+

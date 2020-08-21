@@ -1,0 +1,54 @@
+﻿@model IEnumerable<BugTrackManagment.Models.Project>
+
+@{
+
+    ViewData["Title"] = "Projects List";
+
+}
+
+
+
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">
+                    Projects List
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+
+
+
+<section class="content">
+
+    <div class="container-fluid">
+
+
+        <div class="row">
+
+            <!--Verify Queue -->
+
+            <div class="col-lg-11 col-12">
+
+                <vc:project-list is-index="false"></vc:project-list>
+
+            </div>
+        </div>
+
+
+        
+
+
+    </div>
+
+</section>
+

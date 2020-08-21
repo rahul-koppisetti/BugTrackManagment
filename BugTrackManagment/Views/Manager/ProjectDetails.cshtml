@@ -1,0 +1,38 @@
+﻿@model BugTrackManagment.Models.Project
+
+@{
+    Layout = "";
+    ViewData["Title"] = "Details";
+}
+
+
+
+<div>
+    <h4>Project</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Summary)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Summary)
+        </dd>
+    </dl>
+</div>
+<div>
+    <div class="btn btn-primary text-white"
+       onclick="showInPopup('@Url.Action("ProjectEdit","manager",new { id=Model.Id},Context.Request.Scheme)','Edit ')">
+        Edit
+    </div>
+
+    <div class="btn btn-danger text-white"
+       onclick="showInPopup('@Url.Action("ProjectDelete","manager",new { id=Model.Id},Context.Request.Scheme)','Delete ')">
+        Delete
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Bug>
+@{
+    ViewData["Title"] = "New Issues";
+}
+
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">
+                    New Issues
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+
+<section class="content">
+
+    <div class="container-fluid">
+
+        <div  class="row">
+
+            <!--Created Issues-->
+            <div id="Index_BugListViewComponent" class="col-lg-10 col-12 offset-lg-1">
+
+                <vc:created-issues is-index="false"></vc:created-issues>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+</section>
+

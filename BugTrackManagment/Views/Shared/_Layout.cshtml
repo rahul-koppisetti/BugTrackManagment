@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="container">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BugTrackManagment</title>
+    
+    <partial name="_ValidationScriptsPartial">
+
+</head>
+<body >
+    <header>
+
+        <div >
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+                <a class="navbar-brand" asp-action="index" asp-controller="home">
+                    <img src="~/images/icon.png"  height="30" width="30"/>     
+                </a>
+
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a asp-action="index" asp-controller="Bugs" class="nav-link">List</a>
+                        </li>
+                        
+                        <partial name="_ManageUsersPartial" />
+                    </ul>
+                        <partial name="_loginPartial">   
+                </div>
+            </nav>
+            <div>
+                @RenderBody()
+            </div>
+           
+        </div>
+    </header>
+
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @*@RenderBody()*@
+        </main>
+    </div>
+    
+        <footer class="border-top footer text-muted container bg-dark">
+            <div class="container text-md-center ">
+                &copy; 2020 - BugTrackManagment -
+            </div>
+        </footer>
+    
+ 
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

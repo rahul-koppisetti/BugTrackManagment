@@ -1,0 +1,72 @@
+﻿@model IEnumerable<BugTrackManagment.Models.Project>
+@{
+Layout = "";
+}
+
+@if (Model.Any())
+{
+<div class="card">
+   <div class="card-header border-transparent bg-cyan">
+      <h3 class="card-title">Projects</h3>
+   </div>
+   <!-- /.card-header -->
+   <div class="card-body p-0" style="display: block;">
+      <div class="table-responsive">
+         <table class="table m-0 table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Summary)
+                    </th>
+                  
+
+                </tr>
+            </thead>
+            <tbody>
+               @foreach (var item in Model)
+               {
+               <tr
+                   onclick="showInPopup('@Url.Action("ProjectDetails","manager",new { id=item.Id},Context.Request.Scheme)','Details ')"
+                   >
+                  <td>
+                     @Html.DisplayFor(modelItem => item.Title)
+                  </td>
+                  <td>
+                     @Html.DisplayFor(modelItem => item.Summary)
+                  </td>
+              
+               </tr>
+               }
+            </tbody>
+         </table>
+      </div>
+      <!-- /.table-responsive -->
+   </div>
+   <!-- /.card-body -->
+   <div class="card-footer clearfix" style="display: block;">
+       @if (ViewBag.page)
+       {
+           <span class="font-italic text-muted float-left">(Only showing latest Items)</span>
+           <a asp-action="ProjectList" asp-controller="manager"
+              class="btn btn-sm btn-info float-right">View All</a>
+       }
+   </div>
+   <!-- /.card-footer -->
+</div>
+}
+else
+{
+<div class="card">
+   <div class="card-header">
+      Projects
+   </div>
+   <div class="card-body">
+      <blockquote class="blockquote mb-0">
+         <p>There are No Active Projects</p>
+      </blockquote>
+   </div>
+</div>
+}

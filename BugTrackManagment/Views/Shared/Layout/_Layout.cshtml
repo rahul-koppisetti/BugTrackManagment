@@ -1,0 +1,75 @@
+﻿@using BugTrackManagment.Views.Shared.Components.Header
+@using BugTrackManagment.Views.Shared.Components.Sidebar
+
+@using BugTrackManagment.Views.Shared.Components.Footer
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>BugTrack | @ViewData["Title"]</title>
+
+    <link rel="icon" type="image/png" href="~/images/icon.ico" />
+
+    @await Html.PartialAsync("_Styles.cshtml")
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        @(await Component.InvokeAsync<HeaderViewComponent>())
+        @(await Component.InvokeAsync<SidebarViewComponent>())
+        <div class="content-wrapper">
+            @RenderBody()
+        </div>
+
+        @(await Component.InvokeAsync<FooterViewComponent>())
+    </div>
+    
+    @*modal for issuemodal*@
+    <div class="modal" tabindex="-1" role="dialog" id="issue-modal">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content" >
+                <div class="modal-header bg-gradient-gray">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    @*modal for form*@
+    <div id="createform-modal" class="modal" tabindex="-1" role="dialog" >
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header bg-success">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    
+    @*loader*@
+    <div class="loaderbody" id="loaderbody">
+    <div class="loader"></div></div>
+
+    @await Html.PartialAsync("_Scripts.cshtml")
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

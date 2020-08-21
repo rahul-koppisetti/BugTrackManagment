@@ -1,0 +1,256 @@
+﻿@model BugTrackManagment.Models.Bug
+
+@{
+    //ViewData["Title"] = "Details";
+    Layout = "";
+}
+
+
+
+<div>
+
+    <div class="row">
+
+        <div class="text-muted col-12">
+            Title
+        </div>
+        <div class="card border-danger col-12">
+            @Model.Title
+        </div>
+
+
+        <div class=" text-muted  col-12">
+            Summary
+        </div>
+        <div class=" card  col-sm-12">
+            @Model.Summary
+        </div>
+
+        <div class=" text-muted col-12">
+            Description
+        </div>
+
+        <div class=" card  col-12">
+            @Model.Description
+        </div>
+
+
+        <div class=" text-muted col-12">
+            Project
+        </div>
+
+        <div class=" card col-12">
+            @Model.ProjectTitle
+        </div>
+
+        <!--Created User-->
+
+        <div class="col-12 text-muted">
+            Timeline
+        </div>
+        <div class="col-12">
+
+        </div>
+
+    </div>
+
+
+    <section class="content card">
+        <div class="container-fluid">
+
+            <!-- Timelime example  -->
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- The time line -->
+                    <div class="timeline">
+
+                        <!-- Created time label -->
+                        <div class="time-label">
+                            <span class="bg-gradient-lightblue">@Model.CreatedTime</span>
+                        </div>
+                        <!-- /.timeline-label -->
+                        <!-- Created timeline item -->
+                        <div>
+                            <i class="fas fa-user bg-gradient-gray-dark"></i>
+                            <div class="timeline-item">
+                                <span class="time"><i class="fas fa-clock"></i>  @ViewBag.createdSpanTime </span>
+                                <h3 class="timeline-header no-border">
+                                    created By
+                                    @Model.CreatedUserName
+                                </h3>
+                            </div>
+                        </div>
+                        <!-- END timeline item -->
+
+
+
+                        @if (!String.IsNullOrEmpty(Model.AssiginedUserName))
+                        {
+                            <!-- Assgined time label -->
+                            <div class="time-label">
+                                <span class="bg-gradient-lightblue">@Model.AssiginedTime</span>
+                            </div>
+                            <!-- /.timeline-label -->
+                            <!-- Assigined timeline item -->
+                            <div>
+                                <i class="fas fa-user bg-gradient-gray-dark"></i>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fas fa-clock"></i>  @ViewBag.AssiginedSpanTime </span>
+                                    <h3 class="timeline-header no-border">
+                                        Assigined to
+                                        @Model.AssiginedUserName
+                                    </h3>
+                                </div>
+                            </div>
+                            <!-- END timeline item -->
+
+                        }
+
+
+                        @if (!String.IsNullOrEmpty(Model.DuplicateUserName))
+                        {
+                            <!-- Duplicate time label -->
+                            <div class="time-label">
+                                <span class="bg-gradient-lightblue">@Model.ClosedTime</span>
+                            </div>
+                            <!-- /.timeline-label -->
+                            <!-- Duplicate timeline item -->
+                            <div>
+                                <i class="fas fa-user bg-gradient-gray-dark"></i>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fas fa-clock"></i>  @ViewBag.DuplicateSpanTime </span>
+                                    <h3 class="timeline-header no-border">
+                                        Marked Duplicate By
+                                        @Model.DuplicateUserName
+                                    </h3>
+                                </div>
+                            </div>
+                            <!-- END timeline item -->
+                        }
+
+
+                        @if (!String.IsNullOrEmpty(Model.SolvedUserName))
+                        {
+                            <!-- solved time label -->
+                            <div class="time-label">
+                                <span class="bg-gradient-lightblue">@Model.SolvedTime</span>
+                            </div>
+                            <!-- /.timeline-label -->
+                            <!-- Solved timeline item -->
+                            <div>
+                                <i class="fas fa-user bg-gradient-gray-dark"></i>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fas fa-clock"></i>  @ViewBag.SolvedSpanTime </span>
+                                    <h3 class="timeline-header no-border">
+                                        Fixed By
+                                        @Model.SolvedUserName
+                                    </h3>
+                                </div>
+                            </div>
+                            <!-- END timeline item -->
+
+
+                        }
+
+
+                        @if (!String.IsNullOrEmpty(Model.RejectedUserName))
+                        {
+
+                            <!-- Rejected time label -->
+                            <div class="time-label">
+                                <span class="bg-gradient-lightblue">@Model.RejectedTime</span>
+                            </div>
+                            <!-- /.timeline-label -->
+                            <!-- Rejected timeline item -->
+                            <div>
+                                <i class="fas fa-user bg-gradient-gray-dark"></i>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fas fa-clock"></i>  @ViewBag.RejectedSpanTime </span>
+                                    <h3 class="timeline-header no-border">
+                                        Solution NOT Accepted by
+                                        @Model.RejectedUserName
+                                    </h3>
+                                </div>
+                            </div>
+                            <!-- END timeline item -->
+                        }
+
+
+                        @if (!String.IsNullOrEmpty(Model.VerfiedUserName))
+                        {
+                            <!-- Verifed time label -->
+                            <div class="time-label">
+                                <span class="bg-gradient-lightblue">@Model.VerfiedTime</span>
+                            </div>
+                            <!-- /.timeline-label -->
+                            <!-- Verfied timeline item -->
+                            <div>
+                                <i class="fas fa-user bg-gradient-gray-dark"></i>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fas fa-clock"></i>  @ViewBag.VerfiedSpanTime </span>
+                                    <h3 class="timeline-header no-border">
+                                        Solution Accepted By @Model.VerfiedUserName
+                                    </h3>
+                                </div>
+                            </div>
+                            <!-- END timeline item -->
+
+                        }
+
+
+                        @if (!String.IsNullOrEmpty(Model.ClosedUserName))
+                        {
+                            <!-- Closed time label -->
+                            <div class="time-label">
+                                <span class="bg-gradient-lightblue">@Model.ClosedTime</span>
+                            </div>
+                            <!-- /.timeline-label -->
+                            <!-- Closed timeline item -->
+                            <div>
+                                <i class="fas fa-user bg-gradient-gray-dark"></i>
+                                <div class="timeline-item">
+                                    <span class="time"><i class="fas fa-clock"></i>  @ViewBag.ClosedSpanTime </span>
+                                    <h3 class="timeline-header no-border">
+                                        Issue closed By @Model.ClosedUserName
+                                    </h3>
+                                </div>
+                            </div>
+                            <!-- END timeline item -->
+                        }
+
+
+
+
+
+
+
+
+                        <div>
+
+                            <i class="fas fa-calendar-plus bg-gray"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+        </div>
+        <!-- /.timeline -->
+
+    </section>
+
+
+
+</div>
+
+
+@*<div class="row ">
+
+
+        <form asp-action="Delete" asp-controller="tester" asp-route-id="@Model.Id" onsubmit=" return jQueryAjaxDelete(this)">
+            <button type="submit" class="col btn btn-danger m-1"> Delete   </button>
+        </form>
+
+
+
+    </div>*@

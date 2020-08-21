@@ -1,0 +1,138 @@
+﻿
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<!-- Content Header (Page header) -->
+        <div class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1 class="m-0 text-dark">
+                  Manager Dashboard
+                </h1>
+              </div>
+            </div>
+    <!-- /.row -->
+          </div>
+    <!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+
+        <section class="content">
+
+            <div class="container-fluid">
+
+                <div class="row">
+
+
+                    <!--projects count -->
+
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3><vc:project-count></vc:project-count></h3>
+
+                                <p>Projects</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-list-ul"></i>
+                            </div>
+                            <a asp-action="ProjectList" asp-controller="Manager" class="small-box-footer">
+                                Project List
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <!--Active Bugs count-->
+
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3>@ViewBag.BugsCount</h3>
+
+                                <p>Active Bugs</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-bug"></i>
+                            </div>
+                            <a asp-action="bugsDashboard" asp-controller="manager" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+
+
+
+
+                    <!--Testers Count-->
+
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3>@ViewBag.TesterCount</h3>
+
+                                <p>Testers </p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-users-cog"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+
+
+
+                    <!--Programmer Count-->
+
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3>@ViewBag.ProgrammerCount</h3>
+
+                                <p>Programmers</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+
+                <!--row start-->
+                <div class="row ">
+
+                    <div class="col-lg-6">
+                        <vc:bug-list is-index="true"></vc:bug-list>
+
+                    </div>
+                    <div class="col-lg-6">
+                        <vc:project-List is-index="true"></vc:project-List>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+
+        </section>
+
+
+
+  

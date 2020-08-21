@@ -1,0 +1,153 @@
+﻿<nav class="mt-2">
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+
+        @if (signInManager.IsSignedIn(User) && User.IsInRole("Programmer"))
+        {
+            //Dashboard
+    <li class="nav-item">
+        <a asp-action="index" asp-controller="Programmer" class="nav-link">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+                Dashboard
+            </p>
+        </a>
+    </li>
+
+
+
+ //New Issues
+    <li class="nav-item">
+        <a asp-action="NewIssues" asp-controller="Programmer" class="nav-link">
+            <i class="nav-icon fas fa-file-alt"></i>
+            <p>
+                New Issues
+            </p>
+        </a>
+    </li>
+    
+    
+    //My Working list
+    <li class="nav-item">
+        <a asp-action="WorkingOn" asp-controller="Programmer" class="nav-link">
+            <i class="nav-icon fas fa-laptop-code"></i>
+            <p>
+                Working On
+            </p>
+        </a>
+    </li>
+    
+    
+    
+    //My Review
+    <li class="nav-item">
+        <a asp-action="InReview" asp-controller="Programmer" class="nav-link">
+            <i class="nav-icon fas fa-spinner"></i>
+            <p>
+                In Review
+            </p>
+        </a>
+    </li>
+    
+    
+    
+    }
+
+
+
+        @if (signInManager.IsSignedIn(User) && User.IsInRole("Tester"))
+        {
+            //dashboard
+    <li class="nav-item">
+        <a asp-action="index" asp-controller="tester" class="nav-link">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+                Dashboard
+            </p>
+        </a>
+    </li>
+ //create new issue
+    <li class="nav-item">
+
+        <a class="nav-link" href="#" onclick="showform('@Url.Action("Create","Tester",null,Context.Request.Scheme)','Create New Issue')">
+            <i class="nav-icon fas fa-random"></i>
+            <p>
+                Open New Issue
+            </p>
+        </a>
+
+    </li> //My created Issues
+    <li class="nav-item">
+        <a asp-action="TesterIssues" asp-controller="tester" class="nav-link">
+            <i class="nav-icon fas fa-file-alt"></i>
+            <p>
+                My Created Issues
+            </p>
+        </a>
+    </li> // To be Verfied Q
+    <li class="nav-item">
+        <a asp-action="VerifyQueue" asp-controller="tester" class="nav-link">
+            <i class="nav-icon fas fa-list-ul"></i>
+            <p>
+                To Be Verified Queue
+            </p>
+        </a>
+    </li>
+}
+
+
+
+        @if (signInManager.IsSignedIn(User) && User.IsInRole("Manager"))
+        {
+            //DashBoard
+    <li class="nav-item">
+
+        <a class="nav-link" asp-action="index" asp-controller="manager">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+                DashBoard
+            </p>
+        </a>
+
+    </li> //Create Project
+    <li class="nav-item">
+
+        <a class="nav-link" href="#" onclick="showform('@Url.Action("ProjectCreate","Manager",null,Context.Request.Scheme)','Create New Project')">
+            <i class="nav-icon fas fa-random"></i>
+            <p>
+                Create Project
+            </p>
+        </a>
+
+
+    </li> //Project List
+    <li class="nav-item">
+
+        <a class="nav-link" asp-action="projectList" asp-controller="manager">
+            <i class="nav-icon fas fa-list-ul"></i>
+            <p>
+                Projects List
+            </p>
+        </a>
+
+    </li> //Bugs Dashboard
+    <li class="nav-item">
+
+        <a class="nav-link" asp-action="BugsDashboard" asp-controller="manager">
+            <i class="nav-icon fas fa-bug"></i>
+            <p>
+                Bugs DashBoard
+            </p>
+        </a>
+
+    </li>
+}
+
+
+
+
+
+
+
+    </ul>
+</nav>

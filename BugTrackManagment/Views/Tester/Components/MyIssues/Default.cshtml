@@ -1,0 +1,141 @@
+﻿@model IEnumerable<Bug>
+
+@{
+    Layout = "";
+}
+
+
+
+@if (Model.Any())
+{
+    <div class="card">
+        <div class="card-header border-transparent bg-cyan">
+            <h3 class="card-title"> My Created Issues</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body p-0" ;">
+
+            <div class="table-responsive">
+                <!-- insert table here -->
+                <table class="table m-0  table-hover">
+                    <thead>
+                        <tr class="table table-responsive-lg ">
+                            <th scope="col"> Issue </th>
+                            @if (ViewBag.page!=true)
+                            {
+                                <th scope="col"> Project </th>
+
+                            }
+                            <th scope="col"> Issue Summary </th>
+                            <th scope="col"> Status</th>
+                            <th scope="col"> User</th>
+
+                        </tr>
+                    </thead>
+                    @foreach (var bug in Model)
+                    {
+
+
+                        <tbody>
+                            <tr onclick="showInPopup('@Url.Action("DetailsNewIssue","tester",new { id=bug.Id},Context.Request.Scheme)','My Issues Details ')">
+                               
+                                <td>@bug.Title</td>
+
+                                @if (ViewBag.page!=true)
+                                {
+                                    <td>@bug.ProjectTitle</td>
+                                }
+
+                                <td>@bug.Summary</td>
+
+
+                                @if (bug.Status == StatusOptions.created)
+                                {
+                                    <td>
+                                        <span class="badge badge-primary">Created</span>
+                                    </td>
+                                    <td>@bug.CreatedUserName</td>
+                                }
+                                @if (bug.Status == StatusOptions.Assigined)
+                                {
+                                    <td>                <span class="badge badge-warning">In Progress</span></td>
+                                    <td>@bug.AssiginedUserName</td>
+                                }
+                                @if (bug.Status == StatusOptions.Duplicate)
+                                {
+                                    <td>        <span class="badge badge-secondary">Duplicate Issue</span></td>
+                                    <td>@bug.DuplicateUserName</td>
+                                }
+                                @if (bug.Status == StatusOptions.solved)
+                                {
+                                    <td>        <span class="badge badge-info">To Be Verified</span></td>
+                                    <td>@bug.SolvedUserName</td>
+                                }
+                                @if (bug.Status == StatusOptions.closed)
+                                {
+                                    <td>        <span class="badge badge-success">Closed</span></td>
+                                    <td>@bug.ClosedUserName</td>
+                                }
+                                @if (bug.Status == StatusOptions.Rejected)
+                                {
+                                    <td>        <span class="badge badge-primary">Rejected</span></td>
+                                    <td>@bug.RejectedUserName</td>
+                                }
+                                @if (bug.Status == StatusOptions.verfied)
+                                {
+                                    <td>        <span class="badge badge-success">Verified</span></td>
+                                    <td>@bug.VerfiedUserName</td>
+                                }
+
+
+
+
+                            </tr>
+                        </tbody>
+
+
+                    }
+                </table>
+            </div>
+
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer clearfix">
+
+
+            @if (ViewBag.page)
+            {
+                <span class="float-left font-italic text-muted"> (Only showing latest records)</span>
+
+                <a asp-action="TesterIssues" asp-controller="tester"
+                   class="btn btn-sm btn-info float-right">View All</a>
+            }
+        </div>
+        <!-- /.card-footer -->
+    </div>
+}
+
+
+
+
+
+
+else
+{
+    <div class="card">
+        <div class="card-header bg-cyan">
+            My Created Issues
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <!-- edit for no blank -->
+                <p>Your Issues List is Empty</p>
+
+            </blockquote>
+        </div>
+    </div>
+}
+
+
+

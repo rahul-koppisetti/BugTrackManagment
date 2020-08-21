@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Bug>
+@{
+    ViewData["Title"] = "List of Issues";
+}
+
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col"> Issue Name</th>
+                <th scope="col"> Summary Name</th>
+                <th scope="col"> Status</th>
+                <th scope="col"> User</th>
+                
+            </tr>
+        </thead>
+        @foreach (var bug in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@bug.Title</td>
+                    <td>@bug.Summary</td>
+                    <td>@bug.Status</td>
+                    <td>@*@bug.AppUserName*@</td>
+                    <td>
+                        <a asp-action="Details" asp-controller="Bugs" asp-route-id="@bug.Id" class="btn btn-primary m-1">View</a>
+                        <a asp-action="Delete" asp-controller="Bugs" asp-route-id="@bug.Id" class="btn btn-primary m-1">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        }
+
+
+    </table>
+}
+else
+{
+    <div class="border-dark card m-3">
+        <span class="alert-info m-3">No Details Found</span>
+    </div>
+}

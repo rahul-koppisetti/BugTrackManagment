@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Bug>
+
+
+
+
+@if (Model.Any())
+{
+    <div class="card">
+        <div class="card-header border-transparent bg-gradient-cyan">
+            <h3 class="card-title">New Issues</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body p-0" style="display: block;">
+            <div class="table-responsive">
+
+                <!-- insert table here -->
+
+
+                <table class="table m-0 table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col"> Issue Name</th>
+                            <th scope="col"> Summary Name</th>
+                            <th scope="col"> User</th>
+
+
+
+                        </tr>
+                    </thead>
+                    @foreach (var bug in Model)
+                    {
+
+                        <tbody>
+                            <tr href="#" onclick="showInPopup('@Url.Action("Details", "Programmer", new { id = bug.Id }, Context.Request.Scheme)','@bug.Title ')">
+                                <td>@bug.Title</td>
+                                <td>@bug.Summary</td>
+                                <td>
+                                    @bug.CreatedUserName
+                                </td>
+
+
+                            </tr>
+                        </tbody>
+                    }
+
+
+                </table>
+                
+
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.card-body -->
+
+
+
+        <div class="card-footer clearfix" style="display: block;">
+            <!-- button for furhter -->
+            @if (ViewBag.isIndex)
+            {
+                <span class="text-muted float-left font-italic">( only showing latest items)</span>
+
+                <a asp-action="NewIssues" asp-controller="Programmer"
+                   class="btn btn-sm btn-info float-right">View All</a>
+            }
+        </div>
+        <!-- /.card-footer -->
+    </div>
+
+
+}
+
+
+else{
+        <div class="card">
+            <div class="card-header bg-gradient-cyan">
+                New Issues
+            </div>
+            <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                    <!-- edit for no blank -->
+                    <p>No New Issues to Show</p>
+
+                </blockquote>
+            </div>
+        </div>
+    }

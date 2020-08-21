@@ -1,0 +1,54 @@
+﻿@model BugTrackManagment.Models.Bug
+
+@{
+    Layout = "";
+}
+
+
+
+
+<div>
+
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title):
+            &nbsp;
+        </dt>
+        <dd class="col-sm-10 ">
+            &nbsp;
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Summary):
+        </dt>
+        <dd class="col-sm-10">
+            &nbsp;
+            @Html.DisplayFor(model => model.Summary)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description):
+        </dt>
+        <dd class="col-sm-10">
+            &nbsp;
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Status):
+        </dt>
+        <dd class="col-sm-10">
+            &nbsp;
+            @Html.DisplayFor(model => model.Status)
+    </dl>
+</div>
+
+<div class="row justify-content-center">
+    
+    <a class="col btn btn-success" asp-controller="Programmer" asp-action="Accept" asp-route-id="@Model.Id">Accept</a> |
+    <a class="col btn btn-primary"  asp-controller="Programmer" asp-action="markDuplicate" asp-route-id="@Model.Id">Mark As Duplicate</a> |
+    
+    @*<form  class="col"  onsubmit="return jqMarkDuplicate(this)" asp-controller="Programmer" asp-action="MarkDuplicate" asp-route-id="@Model.Id">
+        <input type="submit" value="Mark as Dulpicate" class=" col btn btn-primary">
+    </form> |*@
+
+
+</div>

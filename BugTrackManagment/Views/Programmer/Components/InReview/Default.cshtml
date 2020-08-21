@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Bug>
+
+
+@if (Model.Any())
+{
+    <div class="card">
+        <div class="card-header border-transparent bg-success">
+            <h3 class="card-title">In Review</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body p-0" style="display: block;">
+            <div class="table-responsive">
+
+                <!-- insert table here -->
+                <table class="table m-0">
+                    <thead>
+                        <tr>
+                            <th scope="col"> Issue Name</th>
+                            <th scope="col"> Summary Name</th>
+                            <th scope="col"> Status</th>
+                           
+                        </tr>
+                    </thead>
+                    @foreach (var bug in Model)
+                    {
+                        <tbody>
+                            <tr>
+                                <td>@bug.Title</td>
+                                <td>@bug.Summary</td>
+
+                                <td>
+
+                                    @if (bug.Status == StatusOptions.verfied)
+                                    {
+
+                                        <span class="badge badge-success">Accepted</span>
+                                    }
+                                    @if (bug.Status == StatusOptions.created)
+                                    {
+
+                                        <span class="badge badge-danger">Not Accepted</span>
+                                    }
+                                    @if (bug.Status == StatusOptions.solved)
+                                    {
+
+                                        <span class="badge badge-light"><i> Pending</i></span>
+                                    }
+
+                                </td>
+
+                                </tr>
+                        </tbody>
+                    }
+
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer clearfix" style="display: block;">
+            <!-- button for furhter -->
+            @if (ViewBag.isIndex)
+            {
+
+                <span class="text-muted font-italic">(only showing latest items)</span>
+                <a asp-action="InReview" asp-controller="programmer"
+                   class="btn btn-sm btn-info float-right">View All</a>
+            }
+        </div>
+        <!-- /.card-footer -->
+    </div>
+}
+else
+{
+    <div class="card">
+        <div class="card-header bg-success">
+            In Review 
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <!-- edit for no blank -->
+                <p>No issues to Review</p>
+
+            </blockquote>
+        </div>
+    </div>
+}
+
+
+
+
+
+

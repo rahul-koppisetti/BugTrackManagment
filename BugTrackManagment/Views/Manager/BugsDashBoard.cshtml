@@ -1,0 +1,201 @@
+﻿@model IEnumerable<Bug>
+
+@{
+    ViewData["Title"] = "BugsDashBoard";
+}
+
+
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">
+                    Tester Dashboard
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+
+
+
+<section class="content">
+
+    <div class="container-fluid">
+
+
+        <div class="row">
+
+            <section class="col-lg-12 col-12 ">
+                <!-- Bugs Dashboard-->
+                <div class="card bg-gradient-gray">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-bug mr-1"></i>
+                            Bugs
+                        </h3>
+
+                    </div>
+                    <!-- /.card-header -->
+
+
+
+                    <!-- Bugs Dashboard -->
+                    <div class="card-body card-deck">
+
+
+
+                        <!--New Issues-->
+
+                        <div class="card text-dark" style="width: 18rem;">
+                            <div class="card-header bg-gradient-danger">
+                                New Issues
+                            </div>
+                            <ul class="list-group list-group-flush">
+
+                                @foreach (var bug in Model)
+                                    @if (bug.Status == StatusOptions.created)
+                                    {
+
+                                        <li 
+
+                                            onclick="showInPopup('@Url.Action("BugsDetails","manager",new { id=bug.Id},Context.Request.Scheme)','Details ')"
+                                            class="list-group-item page-link " style="color:black"
+                                            >
+                                            <i class=" fas fa-bug " style="font-size:x-small"></i>
+                                            @bug.Title
+                                        </li>
+
+                                    }
+
+                                </ul>
+
+                            </div>
+
+
+
+                            <!--In Progress-->
+
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-header bg-warning">
+                                    In Progress
+                                </div>
+                                <ul class="list-group list-group-flush">
+
+                                    @foreach (var bug in Model)
+                                        @if (bug.Status == StatusOptions.Assigined)
+                                        {
+
+
+
+                                            <li onclick="showInPopup('@Url.Action("BugsDetails","manager",new { id=bug.Id},Context.Request.Scheme)','Details ')"
+                                                class="list-group-item page-link " 
+                                                style="color:black">
+                                                <i class=" fas fa-bug " style="font-size:x-small"></i>
+                                                @bug.Title
+                                            </li>
+
+
+                                        }
+
+                                    </ul>
+                                </div>
+
+
+
+
+                                <!--In Review-->
+
+                                <div class="card" style="width: 18rem;">
+                                    <div class="card-header bg-cyan">
+                                        Review
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+
+                                        @foreach (var bug in Model)
+                                            @if (bug.Status == StatusOptions.solved)
+                                            {
+
+
+                                                <li 
+                                                    onclick="showInPopup('@Url.Action("BugsDetails","manager",new { id=bug.Id},Context.Request.Scheme)','Details ')"
+                                                    class="list-group-item page-link " style="color:black">
+                                                    <i class=" fas fa-bug " style="font-size:x-small"></i>
+                                                    @bug.Title
+                                                </li>
+
+
+
+
+
+
+                                            }
+
+                                        </ul>
+                                    </div>
+
+
+
+
+                                    <!--Closed-->
+
+                                    <div class="card" style="width: 18rem;">
+                                        <div class="card-header bg-gradient-gray-dark">
+                                            closed
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+
+                                            @foreach (var bug in Model)
+                                                @if (bug.Status == StatusOptions.verfied || bug.Status == StatusOptions.Duplicate)
+                                                {
+
+
+                                                    <li 
+                                                        onclick="showInPopup('@Url.Action("BugsDetails","manager",new { id=bug.Id},Context.Request.Scheme)','Details ')"
+                                                        class="list-group-item page-link " 
+                                                        style="color:black">
+                                                        <i class=" fas fa-bug " style="font-size:x-small"></i>
+                                                        @bug.Title
+                                                    </li>
+                                                }
+
+                                            </ul>
+                                        </div>
+
+
+
+
+
+
+
+
+                                    </div><!-- /.card-body -->
+                                </div>
+                                <!-- /.card -->
+
+
+                            </section>
+
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-lg-12">
+                                <vc:bug-list is-index="false"></vc:bug-list>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+

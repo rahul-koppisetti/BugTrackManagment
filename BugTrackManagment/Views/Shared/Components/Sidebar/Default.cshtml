@@ -1,0 +1,11 @@
+﻿@using BugTrackManagment.Views.Shared.Components.SidebarBrand
+@using BugTrackManagment.Views.Shared.Components.SidebarUserPanel
+@using BugTrackManagment.Views.Shared.Components.SidebarMenu
+
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    @(await Component.InvokeAsync<SidebarBrandViewComponent>())
+    <div class="sidebar">
+        @(await Component.InvokeAsync<SidebarUserPanelViewComponent>())
+        @(await Component.InvokeAsync<SidebarMenuViewComponent>())
+    </div>
+</aside>

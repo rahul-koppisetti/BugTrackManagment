@@ -1,0 +1,117 @@
+﻿@model IEnumerable<Bug>
+
+
+@if (Model.Any())
+{
+    <div class="card">
+        <div class="card-header border-transparent bg-gradient-red">
+            <h3 class="card-title">All Issues</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body p-0" style="display: block ;">
+            <div class="table-responsive">
+
+                <!-- insert table here -->
+                <table class="table m-0 table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col"> Issue </th>
+                            <th scope="col"> Project</th>
+                            <th scope="col"> Issue Summary </th>
+                            <th scope="col"> Status</th>
+                            <th scope="col"> User</th>
+                            
+                        </tr>
+                    </thead>
+
+                    @foreach (var bug in Model)
+                    {
+
+
+                        <tbody>
+                            <tr
+                                onclick="showInPopup('@Url.Action("DetailsNewIssue","tester",new { id=bug.Id},Context.Request.Scheme)','@bug.Title ')"
+                                
+                                >
+                                <td>@bug.Title</td>
+                                <td>@bug.ProjectTitle</td>
+                                <td>@bug.Summary</td>
+                                
+                                    @if (bug.Status == StatusOptions.created)
+                                    {
+                            <td>
+                                <span class="badge badge-primary">Created</span>
+                            </td>
+                                    <td>@bug.CreatedUserName</td>
+                                }
+                                    @if (bug.Status == StatusOptions.Assigined)
+                                    {
+                            <td>                <span class="badge badge-warning">In Progress</span></td>
+                                        <td>@bug.AssiginedUserName</td>
+                                    }
+                                    @if (bug.Status == StatusOptions.Duplicate)
+                                    {
+                            <td>        <span class="badge badge-secondary">Duplicate Issue</span></td>
+                                        <td>@bug.DuplicateUserName</td>
+                                    }
+                                    @if (bug.Status == StatusOptions.solved)
+                                    {
+                            <td>        <span class="badge badge-info">To Be Verified</span></td>
+                                        <td>@bug.SolvedUserName</td>
+                                    }
+                                    @if (bug.Status == StatusOptions.closed)
+                                    {
+                            <td>        <span class="badge badge-success">Closed</span></td>
+                                        <td>@bug.ClosedUserName</td>
+                                    }
+                                    @if (bug.Status == StatusOptions.Rejected)
+                                    {
+                            <td>        <span class="badge badge-primary">Rejected</span></td>
+                                        <td>@bug.RejectedUserName</td>
+                                    }
+                                    @if (bug.Status == StatusOptions.verfied)
+                                    {
+                            <td>        <span class="badge badge-success">Verified</span></td>
+                                        <td>@bug.VerfiedUserName</td>
+                                    }
+                                   
+
+                                    
+
+                                </tr>
+                        </tbody>
+
+
+                    }
+
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer clearfix" style="display: block;">
+
+            <!-- button for furhter -->
+            @*<a href="#"
+               class="btn btn-sm btn-info float-right">View All</a>*@
+        </div>
+        <!-- /.card-footer -->
+    </div>
+}
+else
+{
+    <div class="card">
+        <div class="card-header bg-gradient-danger">
+            All Issues
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <!-- edit for no blank -->
+                <p>There are No bugs in any projects</p>
+
+            </blockquote>
+        </div>
+    </div>
+}
+
+

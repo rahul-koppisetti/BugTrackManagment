@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> signInManager
+@inject UserManager<AppUser> UserManager
+
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        @if (User.IsInRole("Admin"))
+        {
+        <div class="image">
+
+            <img src="~/images/Roles/admin1.png"  class="img-circle elevation-2" alt="User Role">
+        </div>
+        }
+
+        @if (User.IsInRole("Tester"))
+        {
+    <div class="image">
+        
+        <img src="~/images/Roles/tester.png"  class="img-circle elevation-2" alt="User Role">
+    </div>
+        }
+
+        @if (User.IsInRole("Programmer"))
+        {
+    <div class="image">
+        <img src="~/images/Roles/programmer.jpg"  class="img-circle elevation-2" alt="User Role">
+    </div>
+        }
+
+        @if (User.IsInRole("Manager"))
+        {
+    <div class="image">
+        <img src="~/images/Roles/manager.png"  class="img-circle elevation-2" alt="User Role">
+    </div>
+        }
+
+        <div class="info">
+            <a href="#" class="d-block">@User.Identity.Name</a>
+        </div>
+    </div>

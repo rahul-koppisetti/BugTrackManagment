@@ -1,0 +1,144 @@
+﻿
+@{
+ViewData["Title"] = "List of Issues";
+}
+
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">
+                    Programmer Dashboard
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+
+
+
+<section class="content">
+
+    <div class="container-fluid">
+
+
+        <div class="row">
+
+
+
+            <!-- New Issues Count-->
+
+            <div class="col-lg-4 col-6">
+                <!-- small box -->
+                <div class="small-box bg-cyan">
+                    <div class="inner">
+                        <h3>@ViewBag.CreatedIssuesCount</h3>
+
+                        <p> New Issues </p>
+                    </div>
+                    <div class="icon">
+                        <i class="nav-icon fas fa-file-alt"></i>
+                    </div>
+                    <a asp-action="NewIssues" asp-controller="Programmer" class="small-box-footer">
+                    Full List 
+                    <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+
+
+
+
+            <!--Working ON count -->
+
+            <div class="col-lg-4 col-6">
+                <!-- small box -->
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3>@ViewBag.WorkingOnCount</h3>
+
+                        <p>Working On</p>
+                    </div>
+                    <div class="icon">
+                        <i class="nav-icon fas fa-laptop-code"></i>
+                    </div>
+                    <a asp-action="WorkingOn" asp-controller="Programmer" class="small-box-footer">
+                        Full List
+                        <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+
+
+            <!--In Review -->
+
+            <div class="col-lg-4 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>@ViewBag.InReviewCount</h3>
+
+                        <p>In Review</p>
+                    </div>
+                    <div class="icon">
+                        <i class="nav-icon fas fa-spinner"></i>
+                    </div>
+                    <a asp-action="InReview" asp-controller="Programmer" class="small-box-footer">
+                        Full List
+                        <i class="fas fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+        <div id="bugslist" class="row">
+
+            <!--MyIssues-->
+            <div class="col-lg-12 col-12">
+                <vc:created-issues is-index="true"></vc:created-issues>
+            </div>
+
+           
+        </div>
+
+        <div id="bugslist" class="row">
+
+
+            <!--Working On-->
+            <div class="col-lg-6  col-12">
+                <vc:working-on is-index="true"></vc:working-on>
+            </div>
+
+
+            <!--In Review-->
+            <div class="col-lg-6  col-12">
+               <vc:in-review is-index="true"></vc:in-review>
+            </div>
+        </div>
+
+
+
+        </div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
