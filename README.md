@@ -49,5 +49,6 @@ A user role defines permissions for users to perform a group of tasks.
 * example(2) on the Regestration page the input email address is searched in the Database if it is already in use or not, this is all done with out page reolad in backgroud(asynchronously )
 * etc
 
+**For Further Details** [click here](https://drive.google.com/file/d/1qRVEJJtn634l05JdgUIZpUksSb0qBS_T/view?usp=sharing)(pdf)
 
 
