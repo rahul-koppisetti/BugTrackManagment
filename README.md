@@ -1,6 +1,6 @@
 # BugTrackManagment
 
-Bug Tracking Mangment is a web-based application that is designed 
+Bug Tracking Managment is a web-based application that is designed 
 to help quality assurance and programmers keep track of reported 
 software bugs in their work.
 
